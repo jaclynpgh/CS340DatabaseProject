@@ -114,6 +114,8 @@
                 <button type="submit" id="addSubmit">Add Student</button>
             </fieldset>
             <br><br>
+        </form>
+        <form>
             <fieldset>
                 <!--search by student id or name-->
                 <legend>Search for Students</legend>
@@ -131,26 +133,27 @@
                 <input type="text" name="lastName" id="lastName" size="30" maxlength="255">
                 <button type="submit" id="searchNameSubmit">Search</button>
             </fieldset>
+        </form>
+        <!--display results-->
+        <div>
+            <h2>Student Info</h2>
 
-            <!--display results-->
-            <div>
-                <h2>Student Info</h2>
-
-                <small>Displays student information from database</small>
-                <br>
-                <br>
-                <span>Student ID: </span><span id="studenttID"></span><span id="studentID"></span><br><br>
-                <span>Name: </span><span id="firstName"></span><span id="lastName"></span><br><br>
-                <span>Birthdate: </span><span id="dateOfBirth"></span><br><br>
-                <span>Gender: </span><span id="gender"></span><br><br>
-                <span>Address: </span><span id="streetAddressLine1"> <span id="streetAddressLine2"></span><br><br>
-                <span>City: </span><span id="city"></span><br><br>
-                <span>State: </span><span id="state">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Zip Code: </span><span id="postalCode"></span><br><br>
-                <span>Phone Number: </span><span id="phoneNumber"></span><br><br>
-
-            </div>
+            <small>Displays student information from database</small>
             <br>
             <br>
+            <span>Student ID: </span><span id="studenttID"></span><span id="studentID"></span><br><br>
+            <span>Name: </span><span id="firstName"></span><span id="lastName"></span><br><br>
+            <span>Birthdate: </span><span id="dateOfBirth"></span><br><br>
+            <span>Gender: </span><span id="gender"></span><br><br>
+            <span>Address: </span><span id="streetAddressLine1"> <span id="streetAddressLine2"></span><br><br>
+            <span>City: </span><span id="city"></span><br><br>
+            <span>State: </span><span id="state">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Zip Code: </span><span id="postalCode"></span><br><br>
+            <span>Phone Number: </span><span id="phoneNumber"></span><br><br>
+
+        </div>
+        <br>
+        <br>
+        <form>
             <!--update student-->
             <fieldset>
                 <legend>Update Student</legend>
@@ -249,15 +252,16 @@
             </fieldset>
             <br><br>
             <fieldset>
-
-                <!--delete Student-->
-                <legend>Delete Student</legend>
-                <label for="studentID">Student ID:</label>
-                <input type="number" name="studentID" id="studentID" size="30">
-                <small>Required to delete</small>
-                <br>
-                <br>
-                <button type="submit" id="deleteSubmit">Delete Student</button>
+        </form>
+        <form>
+            <!--delete Student-->
+            <legend>Delete Student</legend>
+            <label for="studentID">Student ID:</label>
+            <input type="number" name="studentID" id="studentID" size="30">
+            <small>Required to delete</small>
+            <br>
+            <br>
+            <button type="submit" id="deleteSubmit">Delete Student</button>
 
             </fieldset>
         </form>
