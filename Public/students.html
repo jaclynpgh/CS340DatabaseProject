@@ -111,7 +111,7 @@
                 <small>Format: 123-456-7890</small>
                 <br>
                 <br>
-                <input type="submit" id="addSubmit">
+                <button type="submit" id="addSubmit">Add Student</button>
             </fieldset>
             <br><br>
             <fieldset>
@@ -121,7 +121,7 @@
 
                 <label for="studentID">Student ID:</label>
                 <input type="number" name="studentID" id="studentID" size="30">
-                <input type="submit" id="searchIDSubmit">
+                <button type="submit" id="searchIDSubmit">Search</button>
                 <br>
                 <br>
                 <h4 for="studentName">Search by Name</h4>
@@ -129,7 +129,7 @@
                 <input type="text" name="firstName" id="firstName" size="30" maxlength="255">&nbsp;
                 <label for="lastName">Last Name:</label>
                 <input type="text" name="lastName" id="lastName" size="30" maxlength="255">
-                <input type="submit" id="searchNameSubmit">
+                <button type="submit" id="searchNameSubmit">Search</button>
             </fieldset>
 
             <!--display results-->
@@ -139,6 +139,7 @@
                 <small>Displays student information from database</small>
                 <br>
                 <br>
+                <span>Student ID: </span><span id="studenttID"></span><span id="studentID"></span><br><br>
                 <span>Name: </span><span id="firstName"></span><span id="lastName"></span><br><br>
                 <span>Birthdate: </span><span id="dateOfBirth"></span><br><br>
                 <span>Gender: </span><span id="gender"></span><br><br>
@@ -244,7 +245,7 @@
                 <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
                 <small>Format: 123-456-7890</small>
                 <br>
-                <input type="submit" id="updateSubmit">
+                <button type="submit" id="updateSubmit">Update Student</button>
             </fieldset>
             <br><br>
             <fieldset>
@@ -256,10 +257,42 @@
                 <small>Required to delete</small>
                 <br>
                 <br>
-                <input type="submit" id="deleteSubmit">
+                <button type="submit" id="deleteSubmit">Delete Student</button>
 
             </fieldset>
         </form>
+
+
+        <!--display results
+        https://www.codegrepper.com/code-examples/javascript/delete+button+for+table -->
+        <div>
+            <h2>Current Students</h2>
+
+            <small>Displays all students from database with option to delete or update</small>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Name</th>
+                </tr>
+                <tr>
+                    <td><span id="studenttID"></span><span id="studentID"></span></td>
+                    <td><span id="firstName"></span><span id="lastName"></span></td>
+                    <td><input type="button" value="Delete" id="deleteRow" onclick="deleteRow"></td>
+                    <td><input type="button" value="Update" id="updateRow" onclick="updateRow"></td>
+
+
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+
+
+        </div>
+        <br>
+        <br>
 
         <p>
             <a href="index.html"> Back to Home Page</a>
