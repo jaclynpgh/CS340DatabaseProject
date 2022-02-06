@@ -251,20 +251,9 @@
                 <button type="submit" id="updateSubmit">Update Student</button>
             </fieldset>
             <br><br>
-            <fieldset>
-        </form>
-        <form>
-            <!--delete Student-->
-            <legend>Delete Student</legend>
-            <label for="studentID">Student ID:</label>
-            <input type="number" name="studentID" id="studentID" size="30">
-            <small>Required to delete</small>
-            <br>
-            <br>
-            <button type="submit" id="deleteSubmit">Delete Student</button>
 
-            </fieldset>
         </form>
+
 
 
         <!--display results
@@ -272,7 +261,7 @@
         <div>
             <h2>Current Students</h2>
 
-            <small>Displays all students from database with option to delete or update</small>
+            <small>Displays all students from database with option to delete</small>
             <br>
             <br>
             <table>
@@ -283,8 +272,8 @@
                 <tr>
                     <td><span id="studenttID"></span><span id="studentID"></span></td>
                     <td><span id="firstName"></span><span id="lastName"></span></td>
-                    <td><input type="button" value="Delete" id="deleteRow" onclick="deleteRow"></td>
-                    <td><input type="button" value="Update" id="updateRow" onclick="updateRow"></td>
+                    <td><input type="button" value="Delete" id="deleteStudent" onclick="deleteStudent"></td>
+
 
 
                 </tr>
