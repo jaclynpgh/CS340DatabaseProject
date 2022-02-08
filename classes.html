@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Classes</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <body>
+        <!-- Form to add students-->
+        <h2>Manage Classes</h2>
+        <form>
+            <!--search by city and country-->
+            <!--&nbsp; adds space-->
+            <fieldset>
+                <legend>Add Classes</legend>
+                <label for="className">Class Name:</label>
+                <input type="text" name="className" id="className" size="30" maxlength="255" required="requried">&nbsp;
+                <br>
+                <br>
+                <label for="teacherID">Class Teacher ID:</label>
+                <input type="text" name="teacherID" id="teacherID" size="30" maxlength="255" required="requried">&nbsp;
+                <br>
+                <br>
+                <label for="classroomID">Classroom ID:</label>
+                <input type="text" name="classroomID" id="classroomID" size="30" maxlength="255">&nbsp;
+                <br>
+                <br>
+        </form>
+        <br><br>
+        <!--display results-->
+        <fieldset>
+            <legend>Class Info</legend>
+
+
+            <small>Displays all class information from database search</small>
+
+
+
+        </fieldset><br><br>
+
+        <!--display results
+        https://www.codegrepper.com/code-examples/javascript/delete+button+for+table -->
+        <fieldset>
+            <legend>Current Classes</legend>
+
+            <small>Displays all classes from database</small>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Class ID</th>
+                    <th>Class Name</th>
+                    <th>Teacher ID</th>
+                    <th>Classroom ID</th>
+                </tr>
+                <tr>
+                    <td><span id="classID"></span></td>
+                    <td><span id="className"></span></span></td>
+                    <td><span id="teacherID"></span></span></td>
+                    <td><span id="classroomID"></span></span>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </fieldset>
+        <br>
+        <br>
+
+        <p>
+            <a href="index.html"> Back to Home Page</a>
+        </p>
+        <script src="" async defer></script>
+    </body>
+
+</html>
