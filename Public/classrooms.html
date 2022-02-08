@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Classrooms</title>
+    <meta name="classrooms" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <body>
+        <!-- Form to add classrooms-->
+        <h2>Manage Classrooms</h2>
+        <form>
+            <!--search by city and country-->
+            <!--&nbsp; adds space-->
+            <fieldset>
+                <legend>Add Classroom</legend>
+                <label for="classroomNum">Classroom Number:</label>
+                <input type="number" name="classroomNum" id="classroomNum" size="15" required="requried">&nbsp;
+                <br>
+                <br>
+                <label for="maxCapacity">Max Capcity:</label>
+                <input type="number" name="maxCapacity" id="maxCapacity" size="15" required="requried">&nbsp;
+                <br>
+                <br>
+                <button type="submit" id="addClassroom">Add Classrooms</button>
+            </fieldset>
+            <br><br>
+        </form>
+
+        <!--display results
+        https://www.codegrepper.com/code-examples/javascript/delete+button+for+table -->
+        <fieldset>
+            <legend>Current Teachers</legend>
+
+            <small>Displays all teachhers from database</small>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Classroom ID</th>
+                    <th>Classroom Number</th>
+                    <th>Max Capacity</th>
+
+                </tr>
+                <tr>
+                    <td><span id="classroomID"></span></td>
+                    <td><span id="classroomNum"></span></span>
+                    </td>
+                    <td><span id="maxCapacity"></span></span>
+
+
+                </tr>
+
+            </table>
+
+
+        </fieldset>
+        <br>
+        <br>
+
+        <p>
+            <a href="index.html"> Back to Home Page</a>
+        </p>
+        <script src="" async defer></script>
+    </body>
+
+</html>
