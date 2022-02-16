@@ -13,8 +13,25 @@
 
 <body>
 
-    <body>
-        <h2>Student Assigned Classes</h2>
+
+    <h2>Manage Student Assigned Classes</h2>
+
+    <form>
+
+        <!--&nbsp; adds space-->
+        <fieldset>
+            <legend>Assign a Class to a Student</legend>
+            <label for="classID">Class ID:</label>
+            <input type="number" name="classID" id="classID" size="15" required="requried">&nbsp;
+            <br>
+            <br>
+            <label for="studentID">Student ID:</label>
+            <input type="number" name="studentID" id="studentID" size="15" required="requried">&nbsp;
+            <br>
+            <br>
+            <button type="submit" id="assignClass">Assign Class</button>
+        </fieldset>
+        <br><br>
         <fieldset>
             <legend>Current Student Assigned Classes</legend>
 
@@ -45,12 +62,12 @@
 
             </table>
         </fieldset>
-    </body>
+</body>
 
-    <p>
-        <a href="index.html"> Back to Home Page</a>
-    </p>
-    <script src="" async defer></script>
+<p>
+    <a href="index.html"> Back to Home Page</a>
+</p>
+<script src="" async defer></script>
 
 
 </html>
