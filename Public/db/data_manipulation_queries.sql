@@ -43,6 +43,7 @@ VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :stre
 -- Student Assigned Classes
 -- Dislay all Student Assigned Classes information from databasse
 SELECT * FROM StudentClasses 
+-- aadd new Student Assigned Class
 INSERT INTO StudentClasses (classID, studentID)
 VALUES (:classID, :studentID);
 -- Delete relationship based on studentID
