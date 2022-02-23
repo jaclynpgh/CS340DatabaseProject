@@ -16,11 +16,11 @@ VALUES (:classroomNum, :maxCapacity);
 
 -- For Students
 -- Dislay all students information from databasse
-SELECT * FROM Students
+SELECT * FROM Students;
 -- Obtain all student info filtered by last name
-SELECT * FROM Students WHERE lastName = :lastName
+SELECT * FROM Students WHERE lastName = :lastName;
 -- Obtain all student info filtered by student id
-SELECT * FROM Students WHERE studentID = :studentID
+SELECT * FROM Students WHERE studentID = :studentID;
 -- add new student
 INSERT INTO Students (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber)
 VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :streetAddressLine2, :city, :state, :postalCode, :phoneNumber);
@@ -34,7 +34,7 @@ DELETE FROM Students WHERE studentID = :studentID;
 
 -- Teachers
 -- Dislay all teachers information from databasse
-SELECT * FROM Students
+SELECT * FROM Students;
 -- add new teacher
 INSERT INTO Teachers (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber)
 VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :streetAddressLine2, :city, :state, :postalCode, :phoneNumber);
@@ -42,9 +42,16 @@ VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :stre
 
 -- Student Assigned Classes
 -- Dislay all Student Assigned Classes information from databasse
-SELECT * FROM StudentClasses 
+SELECT * FROM StudentClasses;
 -- aadd new Student Assigned Class
 INSERT INTO StudentClasses (classID, studentID)
 VALUES (:classID, :studentID);
 -- Delete relationship based on studentID
-DELETE FROM StudentClasses WHERE studentID = :studentID
+DELETE FROM StudentClasses WHERE studentID = :studentID;
+
+-- get student's and their classes
+SELECT c.classID, c.className, s.studentID, s.firstName, s.lastName
+FROM Classes c
+INNER JOIN StudentClasses sc
+    ON sc.classID = c.classID
+    INNER JOIN students s ON s.studentID = sc.studentID;
