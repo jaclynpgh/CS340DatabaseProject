@@ -50,8 +50,10 @@ VALUES (:classID, :studentID);
 DELETE FROM StudentClasses WHERE studentID = :studentID;
 
 -- get student's class
-SELECT c.classID, c.className, s.studentID, s.firstName, s.lastName
+SELECT sc.classID, c.className, s.studentID, s.firstName, s.lastName
 FROM Classes c
 INNER JOIN StudentClasses sc
     ON sc.classID = c.classID
     INNER JOIN students s ON s.studentID = sc.studentID;
+    
+    
