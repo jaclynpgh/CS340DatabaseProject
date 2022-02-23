@@ -49,11 +49,10 @@ VALUES (:classID, :studentID);
 -- Delete relationship based on studentID
 DELETE FROM StudentClasses WHERE studentID = :studentID;
 
--- get student's class
-SELECT sc.classID, c.className, s.studentID, s.firstName, s.lastName
-FROM Classes c
+-- get students' classes
+SELECT sc.studentID, s.firstName, s.lastName, c.classID, c.className 
+FROM Students s
 INNER JOIN StudentClasses sc
-    ON sc.classID = c.classID
-    INNER JOIN Students s ON s.studentID = sc.studentID;
-    
+    ON sc.studentID = s.studentID
+    INNER JOIN Classes c ON c.classID = sc.classID;
     
