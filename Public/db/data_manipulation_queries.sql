@@ -25,7 +25,7 @@ SELECT * FROM Students WHERE studentID = :studentID
 INSERT INTO Students (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber)
 VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :streetAddressLine2, :city, :state, :postalCode, :phoneNumber);
 -- update student based on studentID
-UPDATE Studentss
+UPDATE Students
 SET firstName = :firstName, lastName = :lastName, dateOfBirth = :dateOfBirth, gender = :gender, streetAddressLine1 = :streetAddressLine1, streetAddressLine2 = :streetAddressLine2, 
 city = :city, state = :state, postalCode = :postalCode, phoneNumber = :phoneNumber
 WHERE studentID = :studentID;
