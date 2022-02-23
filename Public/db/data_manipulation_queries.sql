@@ -34,7 +34,7 @@ DELETE FROM Students WHERE studentID = :studentID;
 
 -- Teachers
 -- Dislay all teachers information from databasse
-SELECT * FROM Students;
+SELECT * FROM Teachers;
 -- add new teacher
 INSERT INTO Teachers (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber)
 VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :streetAddressLine2, :city, :state, :postalCode, :phoneNumber);
