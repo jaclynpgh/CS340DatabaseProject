@@ -54,6 +54,6 @@ SELECT sc.classID, c.className, s.studentID, s.firstName, s.lastName
 FROM Classes c
 INNER JOIN StudentClasses sc
     ON sc.classID = c.classID
-    INNER JOIN students s ON s.studentID = sc.studentID;
+    INNER JOIN Students s ON s.studentID = sc.studentID;
     
     
