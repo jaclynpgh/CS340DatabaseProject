@@ -122,19 +122,39 @@
             <br>
             <br>
             <table>
-                <tr>
-                    <th>Teacher ID</th>
-                    <th>Name</th>
-                    <th>Birthdate</th>
-                    <th>Gender</th>
-                    <th>Address1</th>
-                    <th>Address2</th>
-                    <th>City</th>
-                    <th>State</th>
-                    <th>Zip Code</th>
-                    <th>Phone Number</th>
+              <tr>
+                    <th scope="col">Teacher ID</th>
+                    <th scope="col"> First Name</th>
+                    <th scope="col"> Last Name</th>
+                    <th scope="col">Birthdate</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Address1</th>
+                    <th scope="col">Address2</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Zip Code</th>
+                    <th scope="col">Phone Number</th>
                 </tr>
-                <tr>
+
+                 <tbody>
+
+        {{#each Teachers}}
+        <tr>
+            <td>{{this.teacherID}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{{moment this.dateOfBirth format="YYYY-MM-DD"}}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.streetAddressLine1}}</td>
+            <td>{{this.streetAddressLine2}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.postalCode}}</td>
+            <td>{{this.phoneNumber}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+                {{!-- <tr>
                     <td><span id="teacherID"></span></td>
                     <td><span id="firstName"></span></span>
                     </td>
@@ -156,7 +176,7 @@
                     </td>
 
 
-                </tr>
+                </tr> --}}
 
             </table>
 

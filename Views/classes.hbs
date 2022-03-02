@@ -50,12 +50,12 @@
             <br>
             <table>
                 <tr>
-                    <th>Class ID</th>
-                    <th>Class Name</th>
-                    <th>Teacher ID</th>
-                    <th>Classroom ID</th>
+                    <th scope="col">Class ID</th>
+                    <th scope="col">Class Name</th>
+                     <th scope="col">Teacher ID</th>
+                    <th scope="col">Classroom ID</th>
                 </tr>
-                <tr>
+                {{!-- <tr>
                     <td><span id="classID"></span></td>
                     <td><span id="className"></span></span>
                     </td>
@@ -64,7 +64,24 @@
                     <td><span id="classroomID"></span></span>
 
                     </td>
-                </tr>
+                </tr> --}}
+
+
+                           <tbody>
+
+        {{#each Classes}}
+        <tr>
+            <td>{{this.classID}}</td>
+            <td>{{this.className}}</td>
+            <td>{{this.teacherID}}</td>
+            <td>{{this.classroomID}}</td>
+            
+        
+        </tr>
+        {{/each}}
+
+       
+    </tbody>
 
             </table>
 

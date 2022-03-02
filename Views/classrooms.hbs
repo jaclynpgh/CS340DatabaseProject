@@ -49,14 +49,29 @@
                     <th>Max Capacity</th>
 
                 </tr>
-                <tr>
+                {{!-- <tr>
                     <td><span id="classroomID"></span></td>
                     <td><span id="classroomNum"></span></span>
                     </td>
                     <td><span id="maxCapacity"></span></span>
 
 
-                </tr>
+                </tr> --}}
+
+                <tbody>
+
+        {{#each Classrooms}}
+        <tr>
+            <td>{{this.classroomID}}</td>
+            <td>{{this.classroomNum}}</td>
+            <td>{{this.maxCapacity}}</td>
+            
+        
+        </tr>
+        {{/each}}
+
+       
+    </tbody>
 
             </table>
 
