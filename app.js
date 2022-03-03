@@ -49,12 +49,29 @@ app.get('/studentClasses', function(req, res) {
         }) // an object where 'data' is equal to the 'rows' we
 }); // received back from the query
 
+
+
+
+
 app.get('/students', function(req, res) {
-    let query1 = "SELECT * FROM Students;";
+    // Declare Query 1
+    let query1;
+
+    // If there is no query string, we just perform a basic SELECT
+    if (req.query.lastName != undefined) {
+        query1 = `SELECT * FROM Students WHERE lastName LIKE "${req.query.lastName}%"`
+    } else if (req.query.gender != undefined) {
+
+        query1 = `SELECT * FROM Students WHERE gender LIKE "${req.query.gender}%"`
+    } else {
+        query1 = "SELECT * FROM Students;";
+    }
     db.pool.query(query1, function(error, rows, fields) {
-        res.render('students', { Students: rows });
+        let students = rows;
+        return res.render('students', { Students: students });
     })
 });
+
 
 
 app.get('/teachers', function(req, res) {
