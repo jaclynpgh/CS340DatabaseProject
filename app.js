@@ -1,6 +1,12 @@
 // Express
 var express = require('express'); // We are using the express library for the web server
 var app = express(); // We need to instantiate an express object to interact with the server in our code
+
+// app.js - SETUP section
+
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))      
+
 PORT = 9278; // Set a port number at the top so it's easy to change in the future
 // Database
 var db = require('./db-connector')
@@ -75,6 +81,7 @@ app.get('/teachers', function(req, res) {
     })
 });
 
+
 app.post('/add_classes_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
@@ -107,6 +114,7 @@ app.post('/add_classes_form', function(req, res){
     })
 })
 
+
 app.post('/add_classrooms_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
@@ -132,6 +140,7 @@ app.post('/add_classrooms_form', function(req, res){
     })
 })
 
+
 app.post('/add_studentClasses_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
     let data = req.body;
@@ -156,6 +165,7 @@ app.post('/add_studentClasses_form', function(req, res){
         }
     })
 })
+
 
 app.post('/add_students_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
@@ -190,6 +200,7 @@ app.post('/add_students_form', function(req, res){
         }
     })
 })
+
 
 app.post('/add_teachers_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
