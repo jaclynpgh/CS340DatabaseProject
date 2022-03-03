@@ -1,7 +1,7 @@
 // Express
 var express = require('express'); // We are using the express library for the web server
 var app = express(); // We need to instantiate an express object to interact with the server in our code
-PORT = 56889; // Set a port number at the top so it's easy to change in the future
+PORT = 9278; // Set a port number at the top so it's easy to change in the future
 // Database
 var db = require('./db-connector')
 
@@ -75,6 +75,155 @@ app.get('/teachers', function(req, res) {
     })
 });
 
+app.post('/add_classes_form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Capture NULL values
+    let classroomID = parseInt(data['classroomID']);
+    if (isNaN(classroomID))
+    {
+        classroomID = 'NULL'
+    }
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Classes (className, teacherID, classroomID) VALUES ('${data['className']}', '${data['teacherID']}', ${classroomID})`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/classes');
+        }
+    })
+})
+
+app.post('/add_classrooms_form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Classrooms (classroomNum, maxCapacity) VALUES ('${data['classroomNum']}', '${data['maxCapacity']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/classrooms');
+        }
+    })
+})
+
+app.post('/add_studentClasses_form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO StudentClasses (classID, studentID) VALUES ('${data['classID']}', '${data['studentID']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/studentClasses');
+        }
+    })
+})
+
+app.post('/add_students_form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Capture NULL values
+    let streetAddressLine2 = parseInt(data['streetAddressLine2']);
+    if (isNaN(streetAddressLine2))
+    {
+        streetAddressLine2 = ''
+    }
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Students (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber) VALUES (
+        '${data['firstName']}', '${data['lastName']}', '${data['dateOfBirth']}', '${data['gender']}', '${data['streetAddressLine1']}', '${streetAddressLine2}', 
+        '${data['city']}', '${data['state']}', '${data['postalCode']}', '${data['phoneNumber']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/students');
+        }
+    })
+})
+
+app.post('/add_teachers_form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Capture NULL values
+    let streetAddressLine2 = parseInt(data['streetAddressLine2']);
+    if (isNaN(streetAddressLine2))
+    {
+        streetAddressLine2 = ''
+    }
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Teachers (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber) VALUES (
+        '${data['firstName']}', '${data['lastName']}', '${data['dateOfBirth']}', '${data['gender']}', '${data['streetAddressLine1']}', '${streetAddressLine2}', 
+        '${data['city']}', '${data['state']}', '${data['postalCode']}', '${data['phoneNumber']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/teachers');
+        }
+    })
+})
 
 /*
     LISTENER

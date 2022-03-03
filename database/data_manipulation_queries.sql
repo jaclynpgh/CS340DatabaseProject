@@ -19,8 +19,8 @@ VALUES (:classroomNum, :maxCapacity);
 SELECT * FROM Students;
 -- Obtain all student info filtered by last name
 SELECT * FROM Students WHERE lastName = :lastName;
--- Obtain all student info filtered by gender
-SELECT * FROM Students WHERE gender = :gender;
+-- Obtain all student info filtered by student id
+SELECT * FROM Students WHERE studentID = :studentID;
 -- add new student
 INSERT INTO Students (firstName, lastName, dateOfBirth, gender, streetAddressLine1, streetAddressLine2, city, state, postalCode, phoneNumber)
 VALUES (:firstName, :lastName, :dateOfBirth, :gender, :streetAddressLine1, :streetAddressLine2, :city, :state, :postalCode, :phoneNumber);
