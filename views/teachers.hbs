@@ -16,7 +16,7 @@
     <body>
         <!-- Form to add teachers-->
         <h2>Manage Teachers</h2>
-        <form>
+        <form id="add_teachers_form" method="POST" action="/add_teachers_form">
 
             <!--&nbsp; adds space-->
             <fieldset>
@@ -32,8 +32,9 @@
                 <label for="gender">Gender:</label>
                 <select name="gender" id="gender" required="required">
                     <option value="none"></option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-Binary">Non-Binary</option>
                 </select>
                 <br>
                 <br>
@@ -104,8 +105,8 @@
                 <br>
                 <br>
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                <small>Format: 123-456-7890</small>
+                <input type="number" id="phoneNumber" name="phoneNumber" size="10">
+                <small>Format: 1234567890</small>
                 <br>
                 <br>
                 <button type="submit" id="addSubmit">Add Teacher</button>

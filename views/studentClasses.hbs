@@ -9,6 +9,9 @@
     <meta name="studentClasses" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/delete_student.js"></script>
+    
 </head>
 
 <body>
@@ -16,7 +19,7 @@
 
     <h2>Manage Student Assigned Classes</h2>
 
-    <form>
+    <form id="add_studentClasses_form" method="POST" action="/add_studentClasses_form">
 
         <!--&nbsp; adds space-->
         <fieldset>
@@ -31,8 +34,10 @@
             <br>
             <button type="submit" id="assignClass">Assign Class</button>
         </fieldset>
+        </form>
         <br><br>
         <fieldset>
+            
             <legend>Current Student Assigned Classes</legend>
 
             <small>Displays all students and corresponding classes from database with option to delete a student from the class</small>
@@ -69,8 +74,8 @@
             <td>{{this.lastName}}</td>
             <td>{{this.classID}}</td>
             <td>{{this.className}}</td>
+            <td><button onclick="deleteStudent({{this.studentID}})">Delete Student</button></td>
             
-       
         </tr>
         {{/each}}
 
@@ -84,7 +89,6 @@
 <p>
     <a href="index.html"> Back to Home Page</a>
 </p>
-<script src="" async defer></script>
 
 
 </html>

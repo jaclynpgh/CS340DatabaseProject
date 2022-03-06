@@ -9,6 +9,8 @@
     <meta name="students" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/delete_student.js"></script>
 
 </head>
 
@@ -17,7 +19,7 @@
     <body>
         <!-- Form to add students-->
         <h2>Manage Students</h2>
-        <form>
+        <form id="add_students_form" method="POST" action="/add_students_form">
             <!--search by city and country-->
             <!--&nbsp; adds space-->
             <fieldset>
@@ -35,6 +37,7 @@
                     <option value="none"></option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
+                 <option value="nonbinary">Non-binary</option>
                 </select>
                 <br>
                 <br>
@@ -105,55 +108,48 @@
                 <br>
                 <br>
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-                <small>Format: 123-456-7890</small>
+                <input type="number" id="phoneNumber" name="phoneNumber" size="10">
+                <small>Format: 1234567890</small>
                 <br>
                 <br>
                 <button type="submit" id="addSubmit">Add Student</button>
             </fieldset>
             <br><br>
         </form>
-        <form>
+
+                                <!--search by student id or name-->
             <fieldset>
-                <!--search by student id or name-->
-                <legend>Filter Students</legend>
-                <h4 for="studentID">Filter by Student ID</h4>
+            <h2>Filter Students</h2>
+             <a href='/students'><button>Refresh</button></a>
+            <p>Search by last name. Partial last names are OK too!</p>
+            <form id="search-person-html" method='GET' action='/students'>
+                <label for="input-lname">Search by Last Name: </label>
+                <input type="text" name="lastName" id="input-lname-html-search">
+                
+                <input type="submit">
+               
+            </form>
+            
+            <br>
+            <form id="search-gender-html" method='GET' action='/students'>
+                <label for="input-gender">Search by Gender: </label>
 
-                <label for="studentID">Student ID:</label>
-                <input type="number" name="studentID" id="studentID" size="30">
-                <button type="submit" id="searchIDSubmit">Filter by ID</button>
-                <br>
-                <br>
-                <h4 for="studentName">Filter by Last Name</h4>
-
-                <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastName" size="30" maxlength="255">
-                <button type="submit" id="searchNameSubmit">Filter by Last Name</button>
-                <h4 for="gender">Filter by Gender</h4>
-                <label for="gender">Gender:</label>
-                <select name="gender" id="gender">
+                    <select name="gender" id="search-gender-html">
                     <option value="none"></option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
+                <option value="nonbinary">Non-binary</option>
                 </select>
-                <button type="submit" id="searchGenderSubmit">Filter by Gender</button>
+                
+                <input type="submit">
+            </form>
 
             </fieldset>
-        </form>
+     
         <br><br>
-        <!--display results-->
-        <fieldset>
-            <legend>Student Info</legend>
-
-
-            <small>Displays all student information based on filter</small>
 
 
 
-        </fieldset><br><br>
-
-        <!--display results
-        https://www.codegrepper.com/code-examples/javascript/delete+button+for+table -->
         <fieldset>
             <legend>Current Students</legend>
 
@@ -174,32 +170,8 @@
                     <th scope="col">Zip Code</th>
                     <th scope="col">Phone Number</th>
                 </tr>
-                {{!-- <tr>
-                    <td><span id="studentID"></span></td>
-                    <td><span id="firstName"></span></span>
-                    </td>
-                    <td><span id="dateOfBirth"></span></span>
-                    </td>
-                    <td><span id="gender"></span></span>
-                    </td>
-                    <td><span id="streetAddressLine1"></span></span>
-                    </td>
-                    <td><span id="streetAddressLine2"></span></span>
-                    </td>
-                    <td><span id="city"></span></span>
-                    </td>
-                    <td><span id="state"></span></span>
-                    </td>
-                    <td><span id="postalCode"></span></span>
-                    </td>
-                    <td><span id="phoneNumber"></span></span>
-                    </td>
-                    <td><input type="button" value="Delete" id="deleteStudent" onclick="deleteStudent"></td>
-                    <td>
-                        <a href="/updateStudents">
-                            <input type="submit" value="Update" /> </td>
+             
 
-                </tr> --}}
                  {{!-- Body section --}}
     <tbody>
 
@@ -216,6 +188,8 @@
             <td>{{this.state}}</td>
             <td>{{this.postalCode}}</td>
             <td>{{this.phoneNumber}}</td>
+            <td><button onclick="deleteStudent({{this.studentID}})">Delete</button></td>
+            <td><button onclick="updateStudent({{this.studentID}})">Update</button></td>
         </tr>
         {{/each}}
     </tbody>
@@ -230,12 +204,10 @@
         <p>
             <a href="index.html"> Back to Home Page</a>
         </p>
-        <script src="" async defer></script>
+     
     </body>
 
 </html>
 
 
 
-
-   
