@@ -1,5 +1,4 @@
 function deleteStudent(studentID) {
-  
     let link = '/delete-student/';
     link += studentID;
     $.ajax({

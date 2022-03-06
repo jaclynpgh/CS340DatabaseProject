@@ -61,17 +61,34 @@ app.get('/classes', function(req, res) {
 });
 
 
+app.get('/studentClasses', function(req, res) {
+    let query1 = "SELECT sc.studentID, s.firstName, s.lastName, c.classID, c.className FROM Students s INNER JOIN StudentClasses sc ON sc.studentID = s.studentID INNER JOIN Classes c ON c.classID = sc.classID;"; // Define our query
+    let query2 = "SELECT * FROM Classes;";
+    let query3 = "SELECT * FROM Students;";
+    db.pool.query(query1, function(error, rows, fields) {
+            let studentClasses = rows;
+
+        // Run the second query
+        db.pool.query(query2, (error, rows, fields) => {
+            let classes = rows;
+
+            // Run the third query
+        db.pool.query(query3, (error, rows, fields) => {
+            let students = rows;
+
+        res.render('studentClasses', { StudentClasses: studentClasses, Classes: classes, Students: students });
+        })
+    })
+})
+});
+
+
+
 app.use('/updateStudents', function(req, res) {
     res.render('updateStudents');
 });
 
 
-app.get('/studentClasses', function(req, res) {
-    let query1 = "SELECT sc.studentID, s.firstName, s.lastName, c.classID, c.className FROM Students s INNER JOIN StudentClasses sc ON sc.studentID = s.studentID INNER JOIN Classes c ON c.classID = sc.classID;"; // Define our query
-    db.pool.query(query1, function(error, rows, fields) { // Execute the query
-            res.render('studentClasses', { StudentClasses: rows }); // Render the studentClasses.hbs file, and also send the renderer
-        }) // an object where 'data' is equal to the 'rows' we
-}); // received back from the query
 
 
 

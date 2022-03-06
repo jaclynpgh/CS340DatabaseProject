@@ -24,17 +24,27 @@
         <!--&nbsp; adds space-->
         <fieldset>
             <legend>Assign a Class to a Student</legend>
-            <label for="classID">Class ID:</label>
-            <input type="number" name="classID" id="classID" size="15" required="requried">&nbsp;
-            <br>
-            <br>
-            <label for="studentID">Student ID:</label>
-            <input type="number" name="studentID" id="studentID" size="15" required="requried">&nbsp;
+
+                <select name="classID" id="classID" required="required">
+                    <option value="">Select a Class ID</option>
+                    {{#each Classes}}
+                    <option classID="{{this.id}}">{{this.classID}}&nbsp&nbsp<label>  Class:</label> {{this.className}} </option>
+                    {{/each}}
+                </select>
+                <br>
+                <br>
+                   <select name="studentID" id="studentID" required="required">
+                    <option value="">Select a Student ID</option>
+                    {{#each Students}}
+                    <option studentID="{{this.id}}">{{this.studentID}}&nbsp&nbsp <label>  Student:</label> {{this.lastName}} {{this.firstName}}</option>
+                    {{/each}}
+            </select>
             <br>
             <br>
             <button type="submit" id="assignClass">Assign Class</button>
+            
         </fieldset>
-        </form>
+        </form>  
         <br><br>
         <fieldset>
             
@@ -51,20 +61,7 @@
                     <th scope="col">Class ID</th>
                     <th scope="col">Class Name</th>
 
-                    {{!-- <tr>
-                        <td><span id="studenttID"></span></td>
-                        <td><span id="name"></span></span>
-                        </td>
-                        <td><span id="classID"></span></span>
-                        </td>
-                        <td><span id="className"></span></span>
-                        </td>
-
-
-                        <td><input type="button" value="Delete Student" id="deleteStudent" onclick="deleteStudent"></td>
-
-
-                    </tr> --}}
+          
                       <tbody>
 
         {{#each StudentClasses}}
