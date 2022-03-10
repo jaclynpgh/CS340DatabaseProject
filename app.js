@@ -232,7 +232,7 @@ app.post('/add_students_form', function(req, res){
             }
             else
                 {
-                    res.send(rows);
+                    res.redirect('/students');
                 }
         }
     })
@@ -301,8 +301,8 @@ app.get('/:studentID', function(req, res){
     });
 
 app.put('/update_student/:studentID', function(req, res, next){
-    let editStudents= `UPDATE Students SET firstName=?, lastName=?, dateOfBirth=?, gender=?, streetAddressLine1=?, streetAddressLine2=?, city=?, state=?, postalCode=?, phoneNumber=? WHERE studentID = ?`;
-    let inserts = [req.body.firstName, req.body.lastName, req.body.dateOfBirth, req.body.gender, req.body.streetAddressLine1, req.body.streetAddressLine2, req.body.city, req.body.state, req.body.postalCode, req.body.phoneNumber, req.params.studentID]        
+    let editStudents= `UPDATE Students SET firstName=?, lastName=?, gender=?, streetAddressLine1=?, streetAddressLine2=?, city=?, state=?, postalCode=?, phoneNumber=? WHERE studentID = ?`;
+    let inserts = [req.body.firstName, req.body.lastName, req.body.gender, req.body.streetAddressLine1, req.body.streetAddressLine2, req.body.city, req.body.state, req.body.postalCode, req.body.phoneNumber, req.params.studentID]        
                   // Run the second query
                   db.pool.query(editStudents, inserts, function(error, rows, fields) {
   

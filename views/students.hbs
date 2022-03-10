@@ -118,8 +118,8 @@
         </form>
 
                                 <!--search by student id or name-->
-            <fieldset>
             <h2>Filter Students</h2>
+            <fieldset>
              <a href='/students'><button>Refresh</button></a>
             <p>Search by last name. Partial last names are OK too!</p>
             <form id="search-person-html" method='GET' action='/students'>
@@ -146,11 +146,10 @@
 
             </fieldset>
         <br><br>
-
+        <h2>Current Students</h2>
         <fieldset>
-            <legend>Current Students</legend>
 
-            <small>Displays all students from database with option to delete or update a student</small>
+            <p>Displays all students from database with option to delete or update a student</p>
             <br>
             <br>
             <table>
@@ -186,7 +185,8 @@
             <td>{{this.postalCode}}</td>
             <td>{{this.phoneNumber}}</td>
             <td><button onclick="deleteStudent({{this.studentID}})">Delete</button></td>
-            <td><a href="./{{studentID}}">Update</a></td>
+            <td><input type="button" href="./{{studentID}}" onclick='location.href="./{{studentID}}"' value="Update"></td>>
+
         </tr>
         {{/each}}
         <script src="./js/update_student.js"></script>

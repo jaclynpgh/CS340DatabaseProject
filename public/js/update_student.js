@@ -6,7 +6,7 @@ function updateStudent(studentID){
       type: 'PUT',
       data: $('#update_student').serialize(),
       success: function(result){
-        window.location.replace("./");
+        window.location.replace("./students");
       }
   })
 };
