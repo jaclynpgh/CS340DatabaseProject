@@ -34,24 +34,61 @@ app.get('/classrooms', function(req, res) {
 });
 
 
+
 app.get('/classes', function(req, res) {
     let query1 = "SELECT * FROM Classes;";
+
+    // query to add drop down menu for current teachers to Classes
+    let query2 = "SELECT * FROM Teachers;";
+
+    let query3 = "SELECT * FROM Classrooms;";
+
     db.pool.query(query1, function(error, rows, fields) {
-        res.render('classes', { Classes: rows });
+            let classes = rows;
+
+        // Run the second query
+        db.pool.query(query2, (error, rows, fields) => {
+            let teachers = rows;
+
+            // Run the third query
+        db.pool.query(query3, (error, rows, fields) => {
+            let classrooms = rows;
+
+        res.render('classes', { Classes: classes, Teachers: teachers, Classrooms: classrooms });
+        })
     })
+})
 });
+
+
+app.get('/studentClasses', function(req, res) {
+    let query1 = "SELECT sc.studentID, s.firstName, s.lastName, c.classID, c.className FROM Students s INNER JOIN StudentClasses sc ON sc.studentID = s.studentID INNER JOIN Classes c ON c.classID = sc.classID;"; // Define our query
+    let query2 = "SELECT * FROM Classes;";
+    let query3 = "SELECT * FROM Students;";
+    db.pool.query(query1, function(error, rows, fields) {
+            let studentClasses = rows;
+
+        // Run the second query
+        db.pool.query(query2, (error, rows, fields) => {
+            let classes = rows;
+
+            // Run the third query
+        db.pool.query(query3, (error, rows, fields) => {
+            let students = rows;
+
+        res.render('studentClasses', { StudentClasses: studentClasses, Classes: classes, Students: students });
+        })
+    })
+})
+});
+
+
 
 app.use('/updateStudents', function(req, res) {
     res.render('updateStudents');
 });
 
 
-app.get('/studentClasses', function(req, res) {
-    let query1 = "SELECT sc.studentID, s.firstName, s.lastName, c.classID, c.className FROM Students s INNER JOIN StudentClasses sc ON sc.studentID = s.studentID INNER JOIN Classes c ON c.classID = sc.classID;"; // Define our query
-    db.pool.query(query1, function(error, rows, fields) { // Execute the query
-            res.render('studentClasses', { StudentClasses: rows }); // Render the studentClasses.hbs file, and also send the renderer
-        }) // an object where 'data' is equal to the 'rows' we
-}); // received back from the query
 
 
 
@@ -72,15 +109,12 @@ app.get('/students', function(req, res) {
     })
 });
 
-
-
 app.get('/teachers', function(req, res) {
     let query1 = "SELECT * FROM Teachers;";
     db.pool.query(query1, function(error, rows, fields) {
         res.render('teachers', { Teachers: rows });
     })
 });
-
 
 app.post('/add_classes_form', function(req, res){
     // Capture the incoming data and parse it back to a JS object
@@ -172,8 +206,8 @@ app.post('/add_students_form', function(req, res){
     let data = req.body;
 
     // Capture NULL values
-    let streetAddressLine2 = parseInt(data['streetAddressLine2']);
-    if (isNaN(streetAddressLine2))
+    let streetAddressLine2 = data['streetAddressLine2'];
+    if (streetAddressLine2 == null)
     {
         streetAddressLine2 = ''
     }
@@ -196,7 +230,16 @@ app.post('/add_students_form', function(req, res){
         // presents it on the screen
         else
         {
-            res.redirect('/students');
+            if (error) {
+                    
+                // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                console.log(error);
+                res.sendStatus(400);
+            }
+            else
+                {
+                    res.send(rows);
+                }
         }
     })
 })
@@ -207,8 +250,8 @@ app.post('/add_teachers_form', function(req, res){
     let data = req.body;
 
     // Capture NULL values
-    let streetAddressLine2 = parseInt(data['streetAddressLine2']);
-    if (isNaN(streetAddressLine2))
+    let streetAddressLine2 = data['streetAddressLine2'];
+    if (streetAddressLine2 == null)
     {
         streetAddressLine2 = ''
     }
@@ -235,6 +278,81 @@ app.post('/add_teachers_form', function(req, res){
         }
     })
 })
+
+function getStudent(res, context, id, complete){
+    var sql = "SELECT * FROM Students WHERE studentID = ?";
+    var inserts = [id];
+    db.pool.query(sql, inserts, function(error, results, fields){
+        if(error){
+            res.write(JSON.stringify(error));
+            res.end();
+        }
+        context.student = results[0];
+        complete();
+    });
+}
+
+app.get('/:studentID', function(req, res){
+    callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["update_student.js"];
+        getStudent(res, context, req.params.studentID, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('updateStudents', context);
+            }
+
+        }
+    });
+
+app.put('/update_student/:studentID', function(req, res, next){
+    let editStudents= `UPDATE Students SET phoneNumber=3334445555 WHERE studentID = ?`;
+              
+                  // Run the second query
+                  db.pool.query(editStudents, [req.params.studentID], function(error, rows, fields) {
+  
+                      if (error) {
+                          console.log(error);
+                          res.sendStatus(400);
+                      } else {
+                          res.sendStatus(204);
+                      }
+                  })
+              
+
+  });
+
+app.delete('/delete-student/:studentID', function(req,res,next){                                                                       // use delete verb since we are deleting from the database
+    let deleteStudentClasses = `DELETE FROM StudentClasses WHERE studentID = ?`;
+    let deleteStudents= `DELETE FROM Students WHERE studentID = ?`;
+  
+          // Run the 1st query
+          db.pool.query(deleteStudentClasses, [req.params.studentID], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              }
+  
+              // If there was no error, we continue our second query.
+      
+              else
+              {
+                  // Run the second query
+                  db.pool.query(deleteStudents, [req.params.studentID], function(error, rows, fields) {
+  
+                      if (error) {
+                          console.log(error);
+                          res.sendStatus(400);
+                      } else {
+                          res.sendStatus(204);
+                      }
+                  })
+              }
+
+  })});
 
 /*
     LISTENER

@@ -9,6 +9,8 @@
     <meta name="students" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/delete_student.js"></script>
 
 </head>
 
@@ -33,9 +35,9 @@
                 <label for="gender">Gender:</label>
                 <select name="gender" id="gender" required="required">
                     <option value="none"></option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                 <option value="nonbinary">Non-binary</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                 <option value="Nonbinary">Non-binary</option>
                 </select>
                 <br>
                 <br>
@@ -102,11 +104,11 @@
                 </select>&nbsp;
                 <label for="postalCode">Zip Code: </label>
 
-                <input type="number" name="postalCode" id="postalCode" size="15">&nbsp;
+                <input type="number" name="postalCode" id="postalCode" size="15" required="requried">&nbsp;
                 <br>
                 <br>
                 <label for="phoneNumber">Phone Number:</label>
-                <input type="number" id="phoneNumber" name="phoneNumber" size="10">
+                <input type="number" id="phoneNumber" name="phoneNumber" size="10" required="requried">
                 <small>Format: 1234567890</small>
                 <br>
                 <br>
@@ -134,19 +136,16 @@
 
                     <select name="gender" id="search-gender-html">
                     <option value="none"></option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="nonbinary">Non-binary</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Nonbinary">Non-binary</option>
                 </select>
                 
                 <input type="submit">
             </form>
 
             </fieldset>
-     
         <br><br>
-
-
 
         <fieldset>
             <legend>Current Students</legend>
@@ -161,39 +160,15 @@
                     <th scope="col"> Last Name</th>
                     <th scope="col">Birthdate</th>
                     <th scope="col">Gender</th>
-                    <th scope="col">Address1</th>
-                    <th scope="col">Address2</th>
+                    <th scope="col">Address 1</th>
+                    <th scope="col">Address 2</th>
                     <th scope="col">City</th>
                     <th scope="col">State</th>
                     <th scope="col">Zip Code</th>
                     <th scope="col">Phone Number</th>
                 </tr>
-                {{!-- <tr>
-                    <td><span id="studentID"></span></td>
-                    <td><span id="firstName"></span></span>
-                    </td>
-                    <td><span id="dateOfBirth"></span></span>
-                    </td>
-                    <td><span id="gender"></span></span>
-                    </td>
-                    <td><span id="streetAddressLine1"></span></span>
-                    </td>
-                    <td><span id="streetAddressLine2"></span></span>
-                    </td>
-                    <td><span id="city"></span></span>
-                    </td>
-                    <td><span id="state"></span></span>
-                    </td>
-                    <td><span id="postalCode"></span></span>
-                    </td>
-                    <td><span id="phoneNumber"></span></span>
-                    </td>
-                    <td><input type="button" value="Delete" id="deleteStudent" onclick="deleteStudent"></td>
-                    <td>
-                        <a href="/updateStudents">
-                            <input type="submit" value="Update" /> </td>
+             
 
-                </tr> --}}
                  {{!-- Body section --}}
     <tbody>
 
@@ -210,10 +185,12 @@
             <td>{{this.state}}</td>
             <td>{{this.postalCode}}</td>
             <td>{{this.phoneNumber}}</td>
+            <td><button onclick="deleteStudent({{this.studentID}})">Delete</button></td>
+            <td><a href="./{{studentID}}">Update</a></td>
         </tr>
         {{/each}}
+        <script src="./js/update_student.js"></script>
     </tbody>
-
             </table>
 
 
@@ -224,7 +201,7 @@
         <p>
             <a href="index.html"> Back to Home Page</a>
         </p>
-        <script src="" async defer></script>
+     
     </body>
 
 </html>

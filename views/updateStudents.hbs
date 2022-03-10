@@ -10,41 +10,38 @@
 </head>
 
 <body>
-    <h1>Update Student</h1>
-    <form>
+    <h1>Update {{student.firstName}} {{student.lastName}}</h1>
+    <form id="update_student" action="/add_students_form" method="POST">
         <!--update student-->
         <fieldset>
             <legend>Update Student</legend>
-            <label for="studentID">Student ID:</label>
-            <input type="number" name="studentID" id="studentID" size="30" required="required">
-            <small>Required to update</small>
-            <br>
-            <br>
             <label for="firstName">First Name:</label>
-            <input type="text" name="firstName" id="firstName" size="30" maxlength="255">&nbsp;
+            <input type="text" name="firstName" id="firstName" size="30" maxlength="255" value="{{student.firstName}}">&nbsp;
             <label for="lastName">Last Name:</label>
-            <input type="text" name="lastName" id="lastName" size="30" maxlength="255">
+            <input type="text" name="lastName" id="lastName" size="30" maxlength="255" value="{{student.lastName}}">
             <br>
             <br>
             <label for="dateOfBirth">Birthdate:</label>
-            <input type="date" name="dateOfBirth" id="Last" size="20">&nbsp;
+            <input type="date" name="dateOfBirth" id="Last" size="20" value="2013-01-08">&nbsp;
             <label for="gender">Gender:</label>
             <select name="gender" id="gender">
-                <option value="none"></option>
-                <option value="make">Male</option>
-                <option value="female">Female</option>
+                <option value="{{student.gender}}">{{student.gender}}</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
                 </select>
             <br>
             <br>
             <label for="streetAddressLine1">Address:</label>
-            <input type="text" name="streetAddressLine1" id="streetAddressLine1" size="40" maxlength="255" r>&nbsp;
-            <input type="text" name="streetAddressLine2" id="streetAddressLine2" size="40" maxlength="255" placeholder="Apt, suite, unit, building, floor, etc.">
+            <input type="text" name="streetAddressLine1" id="streetAddressLine1" size="40" maxlength="255" value="{{student.streetAddressLine1}}"r>&nbsp;
+            <input type="text" name="streetAddressLine2" id="streetAddressLine2" size="40" maxlength="255" placeholder="Apt, suite, unit, building, floor, etc." value="{{student.streetAddressLine2}}">
             <br>
             <br>
             <label for="city">City:</label>
-            <input type="text" name="city" id="cty" size="30" maxlength="255">&nbsp;
+            <input type="text" name="city" id="cty" size="30" maxlength="255" value="{{student.city}}">&nbsp;
             <label for="city">State :</label>
             <select name="state" id="state">
+                    <option value="{{student.state}}">{{student.state}}</option> 
                     <option value="AL">Alabama</option>
                     <option value="AK">Alaska</option>
                     <option value="AZ">Arizona</option>
@@ -99,24 +96,22 @@
                 </select>&nbsp;
             <label for="postalCode">Zip Code: </label>
 
-            <input type="number" name="postalCode" id="postalCode" size="15">&nbsp;
+            <input type="number" name="postalCode" id="postalCode" size="15" value="{{student.postalCode}}">&nbsp;
             <br>
             <br>
             <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-            <small>Format: 123-456-7890</small>
+            <input type="number" id="phoneNumber" name="phoneNumber" size="10" value="{{student.phoneNumber}}">
+                <small>Format: 1234567890</small>
             <br>
-            <input type="button" value="Update Student" id="updateStudent" onclick="updateStudent">
-        </fieldset>
+            <input type="button" onclick="updateStudent({{student.studentID}})" value="Update">
+        </fieldset> 
+        </form>
         <br><br>
 
-    </form>
+   
     <p>
         <a href="index.html"> Back to Home Page</a>
     </p>
-
-
-    <script src="" async defer></script>
 </body>
 
 </html>
