@@ -82,15 +82,9 @@ app.get('/studentClasses', function(req, res) {
 })
 });
 
-
-
 app.use('/updateStudents', function(req, res) {
     res.render('updateStudents');
 });
-
-
-
-
 
 app.get('/students', function(req, res) {
     // Declare Query 1
@@ -307,16 +301,17 @@ app.get('/:studentID', function(req, res){
     });
 
 app.put('/update_student/:studentID', function(req, res, next){
-    let editStudents= `UPDATE Students SET phoneNumber=3334445555 WHERE studentID = ?`;
-              
+    let editStudents= `UPDATE Students SET firstName=?, lastName=?, dateOfBirth=?, gender=?, streetAddressLine1=?, streetAddressLine2=?, city=?, state=?, postalCode=?, phoneNumber=? WHERE studentID = ?`;
+    let inserts = [req.body.firstName, req.body.lastName, req.body.dateOfBirth, req.body.gender, req.body.streetAddressLine1, req.body.streetAddressLine2, req.body.city, req.body.state, req.body.postalCode, req.body.phoneNumber, req.params.studentID]        
                   // Run the second query
-                  db.pool.query(editStudents, [req.params.studentID], function(error, rows, fields) {
+                  db.pool.query(editStudents, inserts, function(error, rows, fields) {
   
                       if (error) {
                           console.log(error);
                           res.sendStatus(400);
                       } else {
-                          res.sendStatus(204);
+                          res.sendStatus(200);
+                          res.end()
                       }
                   })
               
