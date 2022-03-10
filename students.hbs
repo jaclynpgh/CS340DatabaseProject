@@ -5,22 +5,25 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Teachers</title>
-    <meta name="teachers" content="">
+    <title>Students</title>
+    <meta name="students" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./js/delete_student.js"></script>
+
 </head>
 
 <body>
 
     <body>
-        <!-- Form to add teachers-->
-        <h2>Manage Teachers</h2>
-        <form id="add_teachers_form" method="POST" action="/add_teachers_form">
-
+        <!-- Form to add students-->
+        <h2>Manage Students</h2>
+        <form id="add_students_form" method="POST" action="/add_students_form">
+            <!--search by city and country-->
             <!--&nbsp; adds space-->
             <fieldset>
-                <legend>Add Teachers</legend>
+                <legend>Add Students</legend>
                 <label for="firstName">First Name:</label>
                 <input type="text" name="firstName" id="firstName" size="30" maxlength="255" required="requried">&nbsp;
                 <label for="lastName">Last Name:</label>
@@ -34,7 +37,7 @@
                     <option value="none"></option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-                <option value="Non-Binary">Non-Binary</option>
+                 <option value="Nonbinary">Non-binary</option>
                 </select>
                 <br>
                 <br>
@@ -109,39 +112,69 @@
                 <small>Format: 1234567890</small>
                 <br>
                 <br>
-                <button type="submit" id="addSubmit">Add Teacher</button>
+                <button type="submit" id="addSubmit">Add Student</button>
             </fieldset>
             <br><br>
         </form>
 
-        <!--display results
-        https://www.codegrepper.com/code-examples/javascript/delete+button+for+table -->
-        <fieldset>
-            <legend>Current Teachers</legend>
+                                <!--search by student id or name-->
+            <fieldset>
+            <h2>Filter Students</h2>
+             <a href='/students'><button>Refresh</button></a>
+            <p>Search by last name. Partial last names are OK too!</p>
+            <form id="search-person-html" method='GET' action='/students'>
+                <label for="input-lname">Search by Last Name: </label>
+                <input type="text" name="lastName" id="input-lname-html-search">
+                
+                <input type="submit">
+               
+            </form>
+            
+            <br>
+            <form id="search-gender-html" method='GET' action='/students'>
+                <label for="input-gender">Search by Gender: </label>
 
-            <small>Displays all teachers from database</small>
+                    <select name="gender" id="search-gender-html">
+                    <option value="none"></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Nonbinary">Non-binary</option>
+                </select>
+                
+                <input type="submit">
+            </form>
+
+            </fieldset>
+        <br><br>
+
+        <fieldset>
+            <legend>Current Students</legend>
+
+            <small>Displays all students from database with option to delete or update a student</small>
             <br>
             <br>
             <table>
-              <tr>
-                    <th scope="col">Teacher ID</th>
+                <tr>
+                    <th scope="col">Student ID</th>
                     <th scope="col"> First Name</th>
                     <th scope="col"> Last Name</th>
                     <th scope="col">Birthdate</th>
                     <th scope="col">Gender</th>
-                    <th scope="col">Address1</th>
-                    <th scope="col">Address2</th>
+                    <th scope="col">Address 1</th>
+                    <th scope="col">Address 2</th>
                     <th scope="col">City</th>
                     <th scope="col">State</th>
                     <th scope="col">Zip Code</th>
                     <th scope="col">Phone Number</th>
                 </tr>
+             
 
-                 <tbody>
+                 {{!-- Body section --}}
+    <tbody>
 
-        {{#each Teachers}}
+        {{#each Students}}
         <tr>
-            <td>{{this.teacherID}}</td>
+            <td>{{this.studentID}}</td>
             <td>{{this.firstName}}</td>
             <td>{{this.lastName}}</td>
             <td>{{{moment this.dateOfBirth format="YYYY-MM-DD"}}}</td>
@@ -152,21 +185,26 @@
             <td>{{this.state}}</td>
             <td>{{this.postalCode}}</td>
             <td>{{this.phoneNumber}}</td>
+            <td><button onclick="deleteStudent({{this.studentID}})">Delete</button></td>
+            <td><a href="./{{studentID}}">Update</a></td>
         </tr>
         {{/each}}
+        <script src="./js/update_student.js"></script>
     </tbody>
-
             </table>
 
 
         </fieldset>
         <br>
-
+    
 
         <p>
             <a href="index.html"> Back to Home Page</a>
         </p>
-        <script src="" async defer></script>
+     
     </body>
 
 </html>
+
+
+
