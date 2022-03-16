@@ -21,8 +21,14 @@ Mooncake High School has 90 classrooms with a student body of roughly 2000 stude
 
 ### Schema
 
-![image](https://user-images.githubusercontent.com/71741490/158630213-1678073d-9e9d-484c-aad1-35b59f715039.png)
+<img src="https://user-images.githubusercontent.com/71741490/158630213-1678073d-9e9d-484c-aad1-35b59f715039.png" width="900"/> 
+
 
 ### Entity-Relationship Diagram
-![image](https://user-images.githubusercontent.com/71741490/158630386-3d926f46-c63b-4a3c-87e8-e6c0ea8755ee.png)
+<img src="https://user-images.githubusercontent.com/71741490/158630386-3d926f46-c63b-4a3c-87e8-e6c0ea8755ee.png" width="900"/> 
 
+<br>
+<br>
+</br>
+
+<img src="https://user-images.githubusercontent.com/71741490/158669060-b143b5b5-fdfc-4396-ac34-098e9d874e8c.png" width="900"/> 
