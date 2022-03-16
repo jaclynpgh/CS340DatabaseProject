@@ -3,7 +3,7 @@
 1. Implement all the database-related skills that you learn in this course as well as CS290.
 2. Understand how to transform an idea into a database.
 3. Learn how to develop a web-based UI for your database for providing Create-Read-Update-Delete (CRUD) functionalities.
-4. Learn to work in Steps towards a bigger goal.
+4. Learn to collaborate and work in Steps towards a bigger goal.
  
 
 ## Specifications
