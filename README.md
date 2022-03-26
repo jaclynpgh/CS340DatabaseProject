@@ -1,4 +1,5 @@
 # CS340 Database Project
+#### A collaboration between Jaclyn Sabo and Sam Cain
 ### Project Goals
 1. Implement all the database-related skills that you learn in this course as well as CS290.
 2. Understand how to transform an idea into a database.
